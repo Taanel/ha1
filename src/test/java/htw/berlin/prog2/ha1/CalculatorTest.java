@@ -88,6 +88,19 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    /*
+    * Gefundene Abweichungen:
+    * 1. C/CE funktioniert nicht richtig:
+    *   Javadoc sagt 1. Mal drücken --> Zahl ohne latestValue löschen (Clear)
+    *   2. Mal drücken --> Zahl, latestValue, latestOperation löschen (Clear Entry)
+    *   Falsch --> alles wird schon beim ersten Mal gelöscht
+    * 2. online: 2-5 = -3 --> = --> -8
+    *   Calculator: 2-5 = -3 --> = --> 2 (latestValue) - (-3) (screen) = 5
+    *   --> latestValue wird nicht auktualisiert
+    * 3. online: 1/0 = Error --> = --> Error
+    *   Calculator: 1/0 = Error --> 1 (latestValue) / Error = Crash
+    *   --> 1 / Error noch nicht definiert
+     */
 
     //TODO hier weitere Tests erstellen
 }
