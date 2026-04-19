@@ -123,7 +123,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //Teilaufgabe 1:
+    //Teilaufgabe 2:
     @Test
     @DisplayName("should display result after pressing = two times")
     void testDoubleEqual() {
@@ -143,6 +143,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display error after pressing = after error")
+    void testDivisionByError() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 
