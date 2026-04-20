@@ -144,17 +144,21 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display error after pressing = after error")
-    void testDivisionByError() {
+    @DisplayName("should display result after pressing clear before calculating with a new number")
+    void testClearKey() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
-        calc.pressEqualsKey();
 
-        String expected = "Error";
+        String expected = "20";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
