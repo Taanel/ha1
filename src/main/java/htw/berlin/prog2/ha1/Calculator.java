@@ -18,6 +18,8 @@ public class Calculator {
 
     private boolean newInput = false;
 
+    private boolean firstClearKey = true;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -51,11 +53,17 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
-
-        latestOperand = 0.0;
+        if (firstClearKey == true) {
+            screen = "0";
+            firstClearKey = false;
+        } else {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            latestOperand = 0.0;
+            newInput = false;
+            firstClearKey = true;
+        }
     }
 
     /**
